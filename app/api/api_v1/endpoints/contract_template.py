@@ -20,7 +20,7 @@ class ContractTemplateCreate(BaseModel):
 
 class ContractTemplateResponse(ContractTemplateCreate):
     id: int
-    created_date: datetime
+    created_at: datetime
     author_id: int
 
     class Config:
@@ -36,18 +36,17 @@ class GeneratePrompt(BaseModel):
 @router.post("/create", response_model=ContractTemplateResponse, tags=["Contract Templates"])
 def create_contract_template(
 
- #   post_data: ContractTemplateCreate,
-  #  db: Session = Depends(get_db),
-   # current_user: User = Depends(get_current_user)
+   post_data: ContractTemplateCreate,
+   db: Session = Depends(get_db),
+   current_user: User = Depends(get_current_user)
         
 ):
-    print("Inside /create route: ")
-    return "tttttt"
-    # contract = ContractTemplate(**data.dict(), author_id=current_user.id)
-    # db.add(contract)
-    # db.commit()
-    # db.refresh(contract)
-    # return contract
+   
+    contract = ContractTemplate(**post_data.dict(), author_id=current_user.id)
+    db.add(contract)
+    db.commit()
+    db.refresh(contract)
+    return contract
 
 @router.get("/", response_model=List[ContractTemplateResponse])
 def get_all_contracts(db: Session = Depends(get_db)):

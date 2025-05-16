@@ -10,4 +10,4 @@ api_router.include_router(candidates.router, prefix="/candidates", tags=["candid
 api_router.include_router(applications.router, prefix="/applications", tags=["applications"])
 api_router.include_router(contracts.router, prefix="/contracts", tags=["contracts"]) 
 api_router.include_router(blog_posts.router, prefix="/blog", tags=["blog"])
-api_router.include_router(blog_posts.router, prefix="/contractTemplate", tags=["contractTemplate"])
+api_router.include_router(contract_template.router, prefix="/contractTemplate", tags=["contractTemplate"])
