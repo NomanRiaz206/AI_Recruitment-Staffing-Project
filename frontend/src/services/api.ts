@@ -220,32 +220,7 @@ export const jobs = {
   },
 };
 
-// export const applications = {
-//   create: async (jobId: number) => {
-//     const response = await api.post('/applications', { job_id: jobId });
-//     return response.data;
-//   },
 
-//   getById: async (id: number) => {
-//     const response = await api.get(`/applications/${id}`);
-//     return response.data;
-//   },
-
-//   getCandidateApplications: async () => {
-//     const response = await api.get('/applications/candidate');
-//     return response.data;
-//   },
-
-//   getJobApplications: async (jobId: number) => {
-//     const response = await api.get(`/applications/employer/${jobId}`);
-//     return response.data;
-//   },
-
-//   updateStatus: async (applicationId: number, status: string) => {
-//     const response = await api.put(`/applications/${applicationId}/status`, { status });
-//     return response.data;
-//   },
-// };
 
 export const applications = {
   create: async (jobId: number) => {
@@ -421,82 +396,6 @@ export const users = {
   
   // Additional user-related API functions can be added here
 };
-
-// export const contractTemplates = {
-//   create: async (data: {
-//     name: string;
-//     contract_title: string;
-//     description: string;
-//   }) => {
-//     const response = await api.post('/contractTemplate/create', data);
-//     console.log('Contract Template Created:', response.data);
-//     return response.data;
-//   },
-
-//   getAll: async () => {
-//     const response = await api.get('/contractTemplate/');
-//     return response.data;
-//   },
-
-//   getById: async (id: number) => {
-//     const response = await api.get(`/contractTemplate/${id}`);
-//     return response.data;
-//   },
-
-//   update: async (
-//     id: number,
-//     data: {
-//       name: string;
-//       contract_title: string;
-//       description: string;
-//     }
-//   ) => {
-//     const token = localStorage.getItem('token');
-//     const response = await api.put(`/contractTemplate/update/${id}`, data, {
-//       headers: { Authorization: `Bearer ${token}` },
-//     });
-//     return response.data;
-//   },
-
-//   delete: async (id: number) => {
-//     const token = localStorage.getItem('token');
-//     const response = await api.delete(`/contractTemplate/${id}`, {
-//       headers: { Authorization: `Bearer ${token}` },
-//     });
-//     return response.data;
-//   },
-//   generateDescription: async ({ contract_title }: { contract_title: string }) => {
-//     const token = localStorage.getItem('token');
-//     try {
-//       const response = await api.post(
-//         `contractTemplate/generate_description`,
-//         { contract_title },
-//         {
-//           headers: { Authorization: `Bearer ${token}` },
-//         }
-//       );
-//       console.log("Generated Description:", response.data.description); // Log the full response
-//       return response.data.description;
-//     } catch (error) {
-//       console.error('Error generating description:', error);
-//       throw new Error('Failed to generate description');
-//     }
-//   },
-// };
-
-//   generateDescription: async ({contract_title}:{contract_title: string}) => {
-//     const token = localStorage.getItem('token');
-//     const response = await api.post(
-//       `contracttemplate/generatedescription`,
-//       { contract_title },
-//       {
-//         headers: { Authorization: `Bearer ${token}` },
-//       }
-//     );
-//     console.log("Generated Description:", response.data.description); // Log the full response
-//     return response.data.description;
-    
-//   },
 
 export const contractTemplates = {
   create: async (data: {

@@ -39,15 +39,17 @@ const ContractTemplateDetail: React.FC = () => {
     <>
       <Navbar />
       <Box display="flex" justifyContent="center" mt={5} px={2}>
-        <Card sx={{ width: '100%', maxWidth: 900, boxShadow: 4, borderRadius: 4 }}>
+        <Card sx={{ width: '100%', maxWidth: 900, boxShadow: 4, borderRadius: 4, padding:5}}>
           <CardContent>
             <Typography variant="h4" fontWeight="bold" gutterBottom>
-              {template.title}
+              {template.name}
             </Typography>
 
-            <Typography variant="body2" color="text.secondary" mb={2}>
-              Created on: {new Date(template.created_date || '').toLocaleDateString()}
+              <Typography variant="h4" fontWeight="bold" gutterBottom>
+              {template.contract_title}
             </Typography>
+
+            
 
             <Typography
               variant="body1"
@@ -58,12 +60,15 @@ const ContractTemplateDetail: React.FC = () => {
                 color: '#333'
               }}
             >
-              {template.content}
+              {template.description}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" mb={2}>
+              Created on: {new Date(template.created_at|| '').toLocaleDateString()}
             </Typography>
 
             <Stack direction="row" spacing={2} justifyContent="flex-end" mt={4}>
               {/* Uncomment these if you implement edit/delete for templates */}
-              {/* <Button
+              <Button
                 variant="contained"
                 onClick={() => navigate(`/contract-templates/${id}/edit`)}
                 sx={{ backgroundColor: '#facc15', color: '#000', '&:hover': { backgroundColor: '#eab308' } }}
@@ -77,7 +82,7 @@ const ContractTemplateDetail: React.FC = () => {
                 sx={{ backgroundColor: '#ef4444', color: '#fff', '&:hover': { backgroundColor: '#dc2626' } }}
               >
                 Delete
-              </Button> */}
+              </Button>
             </Stack>
           </CardContent>
         </Card>

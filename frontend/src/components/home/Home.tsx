@@ -22,6 +22,8 @@ import {
 // import PlaceholderImage from '/placeholder-blog.png';
 import { useNavigate } from 'react-router-dom';
 import { blogs } from '../../services/api'; 
+import {jobs} from '../../services/api'
+
 interface Blog {
   id: string;
   title: string;
@@ -31,11 +33,21 @@ interface Blog {
   published_date: string; 
 }
 
+interface Job {
+  id: string;
+  title: string;
+  company_name: string;
+  location: string;
+  description?: string;
+  created_at?: string;
+}
+
 const Home = () => {
   const theme = useTheme();
   const navigate = useNavigate();
 
   const [blogList, setBlogList] = useState<Blog[]>([]);
+   const [jobList, setJobList] = useState<Job[]>([]);
 
   const features = [
     {
@@ -70,7 +82,24 @@ const Home = () => {
       }
     };
 
+       const fetchJobs = async () => {
+      try {
+        const res = await jobs.getAllJobs();
+        console.log('fetched jobs', res)
+        const sortedJobs = res.sort(
+          (a: Job, b: Job) =>
+            new Date(b.created_at || '').getTime() - new Date(a.created_at || '').getTime()
+        );
+        setJobList(sortedJobs);
+      } catch (error) {
+        console.error('Failed to fetch jobs:', error);
+      }
+    };
+
+    
+
     fetchBlogs();
+    fetchJobs();
   }, []);
   
   useEffect(() => {
@@ -209,6 +238,76 @@ const Home = () => {
           </Grid>
         </Container>
       </Box>
+
+    {/* Jobs Section */}
+      <Container maxWidth="lg" sx={{ py: 8 }}>
+        <Typography variant="h3" component="h2" align="center" gutterBottom>
+          Latest Job Openings
+        </Typography>
+        <Grid container spacing={4} mt={4}>
+          {jobList.length > 0 ? (
+            jobList.map((job) => (
+              <Grid item xs={12} sm={6} md={4} key={job.id}>
+                <Card
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    borderRadius: 1,
+                    boxShadow: 4,
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-5px)',
+                      boxShadow: 10,
+                    },
+                  }}
+                >
+                  <CardContent>
+                    <Typography variant="h6" fontWeight="bold" gutterBottom noWrap>
+                      {job.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {job.company_name} - {job.location}
+                    </Typography>
+                    {job.description && (
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          display: '-webkit-box',
+                          WebkitLineClamp: 3,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
+                          minHeight: '60px',
+                          mt: 1,
+                        }}
+                      >
+                        {job.description}
+                      </Typography>
+                    )}
+                    <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
+                      Posted on {new Date(job.created_at || '').toLocaleDateString()}
+                    </Typography>
+                    <Button
+                      size="small"
+                      variant="outlined"
+                      sx={{ mt: 2 }}
+                      onClick={() => navigate(`/jobs/${job.id}`)}
+                    >
+                      View Details →
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))
+          ) : (
+            <Typography variant="body1" align="center" sx={{ width: '100%', mt: 4 }}>
+              No job openings available yet.
+            </Typography>
+          )}
+        </Grid>
+      </Container>
+
       {/* Blog Section */}
     <Container maxWidth="lg" sx={{ py: 8 }}>
   <Typography variant="h3" component="h2" align="center" gutterBottom>

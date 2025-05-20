@@ -95,6 +95,7 @@ async def create_job_posting(
         return db_job
     except Exception as e:
         db.rollback()
+        print(f"Job creation error: {e}") 
         raise HTTPException(
             status_code=500,
             detail=f"An unexpected error occurred: {str(e)}"
