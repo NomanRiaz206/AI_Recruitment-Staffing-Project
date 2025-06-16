@@ -31,11 +31,11 @@ const ManageBlogs: React.FC = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await blogs.getAll(); // Adjust if you have a different API service
+        const res = await blogs.getAll(); 
         console.log('Fetched blogs:', res);
         
         const sorted = res
-          .filter((blog: Blog) => blog.created_date) // Only include blogs with a date
+          .filter((blog: Blog) => blog.created_date)
           .sort((a: Blog, b: Blog) => new Date(b.created_date).getTime() - new Date(a.created_date).getTime());
         
         setBlogList(sorted); // Set the blog list state

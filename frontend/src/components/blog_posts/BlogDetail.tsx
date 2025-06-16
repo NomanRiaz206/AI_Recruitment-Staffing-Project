@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Card, CardContent, Typography, Button, CardMedia, Stack } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { blogs } from '../../services/api'; // Adjust path if needed
+import { blogs } from '../../services/api'; 
 import Navbar from '../layout/Navbar';
 
 const BlogDetail: React.FC = () => {

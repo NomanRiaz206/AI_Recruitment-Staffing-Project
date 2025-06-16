@@ -248,8 +248,6 @@ function App() {
               <Route path="/contractTemplate/create"element={<AdminRoute><ContractTemplateForm mode="create"/></AdminRoute>}/>
               <Route path="/contractTemplate/:id/edit"element={<AdminRoute><ContractTemplateForm mode="edit"/></AdminRoute>}/>
               <Route path="/contractTemplate/:id"element={<AdminRoute><ContractTemplateDetail/></AdminRoute>}/>
-
-          {/* Catch all route - redirect to home if not authenticated, dashboard if authenticated */}
           <Route
             path="*"
             element={

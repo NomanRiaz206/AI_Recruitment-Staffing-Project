@@ -141,7 +141,7 @@ export const candidates = {
   //   return response.data;
   // },
   createProfile: async (data: CreateCandidateProfile): Promise<CandidateProfile | null> => {
-    // Retrieve user information from localStorage (or state)
+    
     const user = JSON.parse(localStorage.getItem('user') || '{}'); 
     // Check if the user is an admin or employer
     if (user.isAdmin || user.isEmployer) {
@@ -156,8 +156,6 @@ export const candidates = {
       throw error;
     }
   },
-
-
 
   getMyProfile: async (): Promise<CandidateProfile> => {
     const response = await api.get('/candidates/me');
@@ -372,11 +370,11 @@ export const blogs = {
         }
       );
   
-      console.log("Generated Content:", response.data); // response.data is full blog string
+      console.log("Generated Content:", response.data);
       return response.data; // this is the blog string
     } catch (error) {
       console.error("API error during generateContent:", error);
-      return ''; // return empty string on error
+      return ''; 
     }
   }
 };
@@ -384,7 +382,7 @@ export const blogs = {
 export const users = {
   // Fetch all users
   getAll: async () => {
-    const response = await api.get('/users');  // Adjust the endpoint if necessary
+    const response = await api.get('/users');  
     return response.data;
   },
 
@@ -394,7 +392,7 @@ export const users = {
     return response.data;
   },
   
-  // Additional user-related API functions can be added here
+  
 };
 
 export const contractTemplates = {

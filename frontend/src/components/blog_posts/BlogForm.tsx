@@ -11,7 +11,7 @@ import {
   InputAdornment
 } from '@mui/material';
 import { Edit, Title as TitleIcon, AutoFixHigh, Image } from '@mui/icons-material';
-import { blogs } from '../../services/api'; // adjust path
+import { blogs } from '../../services/api'; 
 import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../layout/Navbar';
 
