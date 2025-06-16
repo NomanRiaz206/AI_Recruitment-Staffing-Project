@@ -8,9 +8,9 @@ A modern web-based recruitment platform that leverages AI to streamline the hiri
 - 📝 Smart Job Description Generation
 - 🎯 Intelligent Application Scoring
 - 📄 Automated Contract Generation
-- 👥 Dual User Roles (Employers & Candidates)
+- 👥 User Roles (Employers & Candidates & Admin)
 - 🔒 Secure Authentication System
-
+  
 ## Tech Stack
 
 ### Backend

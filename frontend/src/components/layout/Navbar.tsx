@@ -345,7 +345,7 @@ const Navbar = () => {
               >
                 Blog Posts
               </Button> */}
-              <Button
+              {/* <Button
                 color="inherit"
                 startIcon={<Description />}
                 onClick={() => navigate('/applications')}
@@ -354,7 +354,7 @@ const Navbar = () => {
                 }}
               >
                 Applications
-              </Button>
+              </Button> */}
             </>
           ) : (
             // Candidate Navigation

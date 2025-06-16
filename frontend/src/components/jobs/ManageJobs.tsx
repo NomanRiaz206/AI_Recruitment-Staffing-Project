@@ -247,13 +247,13 @@ interface Job {
   };
   created_at: string;
   is_active: boolean;
-  created_by?: number; // ← Add created_by if used for auth
+  created_by?: number; 
 }
 
 interface Application {
   id: number;
   job_id: number;
-  // Add other properties as needed
+  
 }
 
 const ManageJobs: React.FC = () => {
@@ -263,8 +263,9 @@ const ManageJobs: React.FC = () => {
   const [recentApplications, setRecentApplications] = useState<Application[]>([]);
 
   const storedUser = localStorage.getItem("user");
-  const currentEmployerId = storedUser ? JSON.parse(storedUser)?.id : null;
-  const isAdmin = storedUser ? JSON.parse(storedUser)?.isAdmin : false;
+    const user = storedUser ? JSON.parse(storedUser) : null;
+  const currentEmployerId = user?.id || null;
+  const isAdmin = user?.id || false;
 
   // Function to fetch application counts
   const fetchApplicationCounts = async (jobsData: Job[]) => {
